@@ -22,7 +22,7 @@
             padding: 10px;
         }
 
-        /* СТАРТОВОЕ ОКНО. Эй, ты, смотрящий код, что мы тут делаем, аа??? а ну ка выключи.*/
+        /* СТАРТОВОЕ ОКНО */
         .start-screen {
             position: fixed;
             top: 0;
@@ -97,13 +97,15 @@
         }
 
         .story-image-container {
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             width: 100%;
             border-radius: 30px;
-            overflow: hidden;
             box-shadow: 0 15px 30px rgba(0,0,0,0.5);
             border: 3px solid #ffc285;
             cursor: pointer;
+            overflow: visible;
         }
 
         .story-image {
@@ -111,6 +113,7 @@
             height: auto;
             display: block;
             transition: transform 0.3s;
+            border-radius: 27px 27px 0 0; /* чтобы рамка красиво обтекала */
         }
 
         .story-image:active {
@@ -119,9 +122,7 @@
 
         /* Стрелка назад */
         .back-arrow {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
+            margin: 15px 0 15px 15px;
             width: 55px;
             height: 55px;
             background: rgba(255, 240, 210, 0.9);
@@ -134,7 +135,6 @@
             cursor: pointer;
             border: 3px solid #ff9966;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 10;
             transition: 0.2s;
         }
 
@@ -275,12 +275,12 @@
             height: 0;
             border-left: 12px solid transparent;
             border-right: 12px solid transparent;
-            border-bottom: 20px solid #ff8a5c;  /* цвет ушек совпадает с рамкой */
+            border-bottom: 20px solid #ff8a5c;
         }
 
         .jumping-message::before {
             left: 15px;
-            transform: rotate(-8deg);  /* лёгкий наклон */
+            transform: rotate(-8deg);
         }
 
         .jumping-message::after {
@@ -300,11 +300,16 @@
         @media (orientation: landscape) {
             .story-image-container {
                 max-height: 90vh;
+                align-items: center;
             }
             .story-image {
                 width: auto;
-                height: 90vh;
+                height: 80vh;
                 margin: 0 auto;
+            }
+            .back-arrow {
+                align-self: flex-start;
+                margin-left: 10px;
             }
         }
     </style>
